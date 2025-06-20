@@ -1,13 +1,7 @@
 import React from "react";
 
-// interface ClaimLog {
-//   claimId: string;
-//   amount: number;
-//   timestamp: string;
-// }
-
 interface LogItemProps {
-  claimId: string; // This property still exists in the interface but will not be displayed
+  claimId: string;
   amount: number;
   timestamp: string;
   index: number; // New prop for alternating colors
@@ -43,14 +37,12 @@ const LogItem: React.FC<LogItemProps> = ({ amount, timestamp, index }) => {
   const displayedTimestamp = formatRelativeTime(timestamp);
 
   // Determine background color based on index for alternating rows
-  const bgColorClass = index % 2 === 0 ? 'bg-[#251b34]' : 'bg-[#1a112a]'; // Two different darker shades
+  const bgColorClass = index % 2 === 0 ? 'bg-[#2a1e3f]' : 'bg-[#1f1632]'; // More distinct darker shades for alternating rows
 
   return (
-    <div className={`flex justify-between text-sm py-3 px-2 rounded-md transition-all duration-300 ease-in-out hover:scale-[1.01] hover:shadow-lg hover:shadow-purple-500/20 ${bgColorClass} animate-fade-in`}>
-      {/* The claimId span has been removed as per your earlier request */}
-      
+    <div className={`flex justify-between text-sm py-3 px-2 rounded-md transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-lg hover:shadow-purple-500/30 ${bgColorClass} animate-fade-in border border-transparent hover:border-purple-600`}> {/* More pronounced hover scale and shadow, added subtle border for hover */}
       {/* Displaying Amount and Formatted Timestamp */}
-      <span className="text-amber-300 font-poppins text-sm sm:text-base">
+      <span className="text-amber-300 font-poppins text-sm sm:text-base text-shadow-glow-amber-sm"> {/* Added subtle text shadow */}
         {amount.toFixed(2)} ST
       </span>
       <span className="text-gray-400 font-lora text-xs sm:text-sm">

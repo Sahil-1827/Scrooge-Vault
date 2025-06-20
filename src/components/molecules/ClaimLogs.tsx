@@ -14,17 +14,17 @@ interface ClaimLogsProps {
 const ClaimLogs: React.FC<ClaimLogsProps> = ({ logs }) => {
   return (
     <div className="mt-6 max-w-md w-full">
-      <h3 className="text-xl font-bold text-white mb-4 text-left px-4 font-playfair">
+      <h3 className="text-xl font-bold text-white mb-4 text-left px-4 font-playfair text-shadow-glow-light"> {/* Added text-shadow-glow-light */}
         Claim Logs
       </h3>
-      <div className="bg-[#1e1430] p-4 rounded-xl overflow-y-auto max-h-[300px] space-y-2"> {/* Added space-y-2 for gap between log items */}
-        {logs.map((log, index) => ( // Pass index to LogItem
+      <div className="bg-[#1e1430] p-4 rounded-xl overflow-y-auto max-h-[300px] space-y-2 border-2 border-purple-800 shadow-[0_0_15px_rgba(150,0,255,0.4)]"> {/* Added subtle border and shadow to log container */}
+        {logs.map((log, index) => (
           <LogItem
             claimId={log.claimId}
             key={log.claimId}
             amount={log.amount}
             timestamp={log.timestamp}
-            index={index} // New prop: index for alternating colors
+            index={index}
           />
         ))}
       </div>

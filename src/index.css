@@ -3,7 +3,8 @@
 
 body {
   font-family: "Poppins", sans-serif; /* General body font */
-  background-color: #0d0617; /* Changed to a deeper purple-indigo */
+  /* Replaced flat background with a rich radial gradient */
+  background: radial-gradient(circle at center, #1a0f2c 0%, #0d0617 100%);
   color: #ffffff;
   overflow-x: hidden;
 }
