@@ -25,8 +25,8 @@ const VaultClaimModule: React.FC = () => {
 
   const [showConfetti, setShowConfetti] = useState<boolean>(false);
   const [confettiOpacity, setConfettiOpacity] = useState<number>(1);
-  const confettiTimeout = useRef<NodeJS.Timeout | null>(null);
-  const fadeOutInterval = useRef<NodeJS.Timeout | null>(null);
+  const confettiTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const fadeOutInterval = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const [windowDimension, setWindowDimension] = useState(() => ({
     width: typeof window !== 'undefined' ? window.innerWidth : 0,
