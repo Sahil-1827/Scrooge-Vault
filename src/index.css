@@ -2,7 +2,7 @@
 @import "react-toastify/dist/ReactToastify.css";
 
 body {
-  font-family: "Arial", sans-serif;
+  font-family: "Poppins", sans-serif; /* General body font */
   background-color: #211a2c;
   color: #ffffff;
   overflow-x: hidden;

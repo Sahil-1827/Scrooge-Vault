@@ -41,7 +41,7 @@ const initialDummyLogs: ClaimLog[] = [
 const VaultClaimModule: React.FC = () => {
   const [balance, setBalance] = useState(1234567.0);
   const [isClaimable, setIsClaimable] = useState(false);
-  const [timerActive, setTimerActive] = useState(true);
+  // const [timerActive, setTimerActive] = useState(true);
   const [claimCycle, setClaimCycle] = useState(0);
 
   const [showConfetti, setShowConfetti] = useState(false);
@@ -68,9 +68,9 @@ const VaultClaimModule: React.FC = () => {
     return initialDummyLogs;
   });
 
-  useEffect(() => {
-    setTimerActive(true);
-  }, []);
+  // useEffect(() => {
+  //   setTimerActive(true);
+  // }, []);
 
   useEffect(() => {
     localStorage.setItem("claimLogs", JSON.stringify(logs));
@@ -90,7 +90,7 @@ const VaultClaimModule: React.FC = () => {
   // Handler for timer end
   const handleTimerEnd = () => {
     setIsClaimable(true);
-    setTimerActive(false);
+    // setTimerActive(false);
   };
 
   // Handler for claim button click
@@ -124,7 +124,7 @@ const VaultClaimModule: React.FC = () => {
       }, 5000);
 
       setIsClaimable(false);
-      setTimerActive(true);
+      // setTimerActive(true);
       setClaimCycle((prev) => prev + 1);
     }
   };
@@ -135,12 +135,26 @@ const VaultClaimModule: React.FC = () => {
         <ReactConfetti
           width={windowDimension.width}
           height={windowDimension.height}
-          numberOfPieces={1000}
+          numberOfPieces={5000}
           recycle={false}
           tweenDuration={20000}
         />
       )}
       <div className="flex flex-col items-center space-y-6 w-full max-w-md">
+        {/* New Section for Welcome Text and Features */}
+        <div className="bg-[#292231] p-6 rounded-xl shadow-2xl shadow-purple-900/50 w-full text-center border border-purple-800">
+          <h2 className="text-3xl font-bold text-yellow-300 mb-4 animate-pulse-light font-playfair">Welcome to Scrooge Vault!</h2>
+          <p className="text-md text-[#CCCCCC] mb-4 font-lora">
+            Unlock your daily rewards effortlessly. The Scrooge Vault is designed to provide you with a seamless and exciting claiming experience.
+          </p>
+          {/* <h3 className="text-xl font-bold text-purple-300 mb-3 font-poppins">Key Features:</h3> 
+          <ul className="text-[#CCCCCC] list-disc list-inside text-left mx-auto max-w-xs font-lora"> 
+            <li>Daily claimable rewards.</li>
+            <li>Transparent claim history.</li>
+            <li>Secure and reliable.</li>
+            <li>Engaging user interface.</li>
+          </ul> */}
+        </div>
         <VaultCard
           balance={balance}
           isClaimable={isClaimable}

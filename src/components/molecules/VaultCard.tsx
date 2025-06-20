@@ -30,7 +30,7 @@ const VaultCard: React.FC<VaultCardProps> = ({
     <div className="bg-[#292231] p-0 rounded-xl shadow-2xl shadow-purple-900/50 max-w-md w-full overflow-hidden border border-purple-800"> {/* Enhanced shadow and border */}
       {/* Top Bar (Header) */}
       <div className="flex items-center p-4 bg-[#211A2C] border-b border-[#3A3247]">
-        <h1 className="text-white text-xl font-bold flex-grow text-center">
+        <h1 className="text-white text-xl font-bold flex-grow text-center font-playfair"> {/* Applied Playfair Display */}
           Vault
         </h1>
       </div>
@@ -44,18 +44,18 @@ const VaultCard: React.FC<VaultCardProps> = ({
       </div>
 
       <div className="p-6 flex flex-col items-center">
-        <h2 className="text-xl font-bold text-purple-300 mb-2 text-left"> {/* Accent color for text */}
+        <h2 className="text-xl font-bold text-purple-300 mb-2 text-left font-poppins"> {/* Accent color for text, Applied Poppins */}
           Vault Balance
         </h2>
-        <div className="text-5xl font-mono text-yellow-300 text-left mb-8 animate-pulse-light"> {/* Vibrant balance, subtle pulse */}
+        <div className="text-5xl text-yellow-300 text-left mb-8 animate-pulse-light font-playfair"> {/* Vibrant balance, subtle pulse, Applied Playfair Display */}
           {balance.toFixed(2)} ST
         </div>
 
-        <h3 className="text-xl font-bold text-purple-300 mb-4 text-left"> {/* Accent color for text */}
+        <h3 className="text-xl font-bold text-purple-300 mb-4 text-left font-poppins"> {/* Accent color for text, Applied Poppins */}
           Claim in
         </h3>
         <div className="flex justify-start mb-8">
-          <Timer key={timerKey} initialSeconds={60} onTimerEnd={onTimerEnd} />{" "}
+          <Timer key={timerKey} initialSeconds={10} onTimerEnd={onTimerEnd} />{" "}
         </div>
         <Button
           disabled={!isClaimable || isClaiming}

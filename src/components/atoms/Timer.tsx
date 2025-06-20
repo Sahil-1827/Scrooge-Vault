@@ -34,13 +34,13 @@ const Timer: React.FC<TimerProps> = ({ initialSeconds, onTimerEnd }) => {
 
   return (
     <div className="flex space-x-2">
-      <div className="flex flex-col items-center justify-center bg-[#3A3247] p-4 rounded-lg min-w-[70px] h-[70px] text-white border border-purple-500/30"> {/* Added subtle border */}
-        <span className="text-4xl font-mono text-pink-400">{minutes}</span> {/* Vibrant number color */}
-        <span className="text-xs text-[#AAAAAA]">Minutes</span>
+      <div className="flex flex-col items-center justify-center bg-[#3A3247] p-4 rounded-lg min-w-[70px] h-[70px] text-white border border-purple-500/30">
+        <span className="text-4xl font-playfair text-pink-400">{minutes}</span> {/* Vibrant number color, Playfair Display */}
+        <span className="text-xs text-[#AAAAAA] font-poppins">Minutes</span> {/* Applied Poppins */}
       </div>
-      <div className="flex flex-col items-center justify-center bg-[#3A3247] p-4 rounded-lg min-w-[70px] h-[70px] text-white border border-purple-500/30"> {/* Added subtle border */}
-        <span className="text-4xl font-mono text-pink-400">{formattedSeconds}</span> {/* Vibrant number color */}
-        <span className="text-xs text-[#AAAAAA]">Seconds</span>
+      <div className="flex flex-col items-center justify-center bg-[#3A3247] p-4 rounded-lg min-w-[70px] h-[70px] text-white border border-purple-500/30">
+        <span className="text-4xl font-playfair text-pink-400">{formattedSeconds}</span> {/* Vibrant number color, Playfair Display */}
+        <span className="text-xs text-[#AAAAAA] font-poppins">Seconds</span> {/* Applied Poppins */}
       </div>
     </div>
   );
