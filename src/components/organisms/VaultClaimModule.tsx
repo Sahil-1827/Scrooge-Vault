@@ -128,7 +128,7 @@ const VaultClaimModule: React.FC = () => {
         <ReactConfetti
           width={windowDimension.width}
           height={windowDimension.height}
-          numberOfPieces={5000}
+          numberOfPieces={4000}
           recycle={false}
           tweenDuration={10000}
         />
