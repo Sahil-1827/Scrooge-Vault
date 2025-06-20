@@ -5,4 +5,5 @@ body {
   font-family: "Arial", sans-serif;
   background-color: #211a2c;
   color: #ffffff;
+  overflow-x: hidden;
 }
