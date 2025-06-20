@@ -59,7 +59,7 @@ const VaultCard: React.FC<VaultCardProps> = ({
               Your reward awaits!
             </div>
           ) : (
-            <Timer key={timerKey} initialSeconds={10} onTimerEnd={onTimerEnd} />
+            <Timer key={timerKey} initialSeconds={60} onTimerEnd={onTimerEnd} />
           )}
         </div>
         <Button
