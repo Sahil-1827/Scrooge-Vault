@@ -47,7 +47,7 @@ const VaultCard: React.FC<VaultCardProps> = ({
         <h2 className="text-xl font-bold text-purple-300 mb-2 text-left font-poppins">
           Vault Balance
         </h2>
-        <div className="text-5xl text-amber-300 text-left mb-8 animate-pulse-light font-playfair">
+        <div className="text-4xl sm:text-5xl text-amber-300 text-left mb-8 animate-pulse-light font-playfair"> {/* Adjusted font size for small screens */}
           {balance.toFixed(2)} ST
         </div>
 
@@ -57,7 +57,7 @@ const VaultCard: React.FC<VaultCardProps> = ({
         </h3>
         <div className="flex justify-start mb-8">
           {isClaimable ? (
-            <div className="text-3xl font-bold text-emerald-400 font-playfair animate-pulse-light">
+            <div className="text-2xl sm:text-3xl font-bold text-emerald-400 font-playfair animate-pulse-light"> {/* Adjusted font size for small screens */}
               Your reward awaits!
             </div>
           ) : (
