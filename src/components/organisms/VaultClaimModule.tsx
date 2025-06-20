@@ -10,56 +10,48 @@ interface ClaimLog {
   timestamp: string;
 }
 
-// Initial dummy data for logs
+// Initial dummy data for logs - define it outside the component
 const initialDummyLogs: ClaimLog[] = [
-  { claimId: 'CLM1750397959999', amount: 50.25, timestamp: '1/1/2024, 12:00:00 PM' },
-  { claimId: 'CLM1750397959888', amount: 50.25, timestamp: '1/1/2024, 11:00:00 AM' },
-  { claimId: 'CLM1750397959777', amount: 50.25, timestamp: '1/1/2024, 10:00:00 AM' },
-  { claimId: 'CLM1750397959666', amount: 50.25, timestamp: '1/1/2024, 09:00:00 AM' },
-  { claimId: 'CLM1750397959555', amount: 50.25, timestamp: '1/1/2024, 08:00:00 AM' },
+  { claimId: 'DUMMY_1', amount: 100.00, timestamp: '2024-01-01 12:00' },
+  { claimId: 'DUMMY_2', amount: 200.00, timestamp: '2024-01-01 11:00' },
+  { claimId: 'DUMMY_3', amount: 300.00, timestamp: '2024-01-01 10:00' },
+  { claimId: 'DUMMY_4', amount: 400.00, timestamp: '2024-01-01 09:00' },
+  { claimId: 'DUMMY_5', amount: 500.00, timestamp: '2024-01-01 08:00' },
 ];
 
 // Main VaultClaimModule component
 const VaultClaimModule: React.FC = () => {
   const [balance, setBalance] = useState(1234567.00);
   const [isClaimable, setIsClaimable] = useState(false);
-  const [logs, setLogs] = useState<ClaimLog[]>(initialDummyLogs); // Initialize with dummy data
   const [timerActive, setTimerActive] = useState(true);
   const [claimCycle, setClaimCycle] = useState(0);
 
-  // Load logs from localStorage on component mount
-  useEffect(() => {
+  // Initialize logs state using a function that reads from localStorage once
+  const [logs, setLogs] = useState<ClaimLog[]>(() => {
     const storedLogs = localStorage.getItem('claimLogs');
-    let loadedLogs: ClaimLog[] = [];
     if (storedLogs) {
       try {
-        loadedLogs = JSON.parse(storedLogs);
+        const parsedLogs = JSON.parse(storedLogs);
+        // Only return parsed logs if they actually contain data
+        // Otherwise, fall back to dummy data
+        return parsedLogs.length > 0 ? parsedLogs : initialDummyLogs;
       } catch (e) {
-        console.error("Failed to parse stored logs from localStorage, using default:", e);
+        console.error("Failed to parse stored logs from localStorage, falling back to dummy data:", e);
+        return initialDummyLogs; // Fallback to dummy data if stored data is corrupt
       }
     }
-    // Combine loaded logs (if any) with dummy data.
-    // Ensure unique entries if claimIds can overlap between dummy and stored.
-    // For simplicity, this example just prepends loaded logs to dummy data if loadedLogs is not empty.
-    // If you want strictly unique, you'd need a more complex merge.
-    if (loadedLogs.length > 0) {
-      // Filter out dummy logs that might have the same claimId as real logs, if necessary
-      // For this case, assuming dummy IDs (100, 200, etc.) won't conflict with CLM + timestamp
-      const combinedLogs = [...loadedLogs, ...initialDummyLogs];
-      setLogs(combinedLogs);
-    } else {
-      setLogs(initialDummyLogs); // If no stored logs, just use the dummies
-    }
+    return initialDummyLogs; // If no stored data, use the dummy data
+  });
 
-    setTimerActive(true);
-  }, []);
-
-  // Save logs to localStorage whenever the logs state changes
+  // Effect to manage timer activation (e.g., on initial component mount)
   useEffect(() => {
-    // Only save logs if they are not just the initial dummy set
-    // Or save everything if you want dummy data to persist too
+    setTimerActive(true);
+  }, []); // Empty dependency array means this runs once on mount
+
+  // Effect to save logs to localStorage whenever the logs state changes
+  useEffect(() => {
     localStorage.setItem('claimLogs', JSON.stringify(logs));
-  }, [logs]);
+  }, [logs]); // Runs whenever 'logs' state changes
 
   // Handler for timer end
   const handleTimerEnd = () => {
