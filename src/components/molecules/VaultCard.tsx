@@ -27,10 +27,10 @@ const VaultCard: React.FC<VaultCardProps> = ({
   };
 
   return (
-    <div className="bg-[#1e1430] p-0 rounded-xl shadow-[0_0_40px_rgba(200,0,255,0.9)] max-w-md w-full overflow-hidden border-2 border-amber-400"> {/* More intense purple shadow */}
+    <div className="bg-[#1e1430] p-0 rounded-xl shadow-[0_0_40px_rgba(200,0,255,0.9)] max-w-md w-full overflow-hidden border-2 border-amber-400">
       {/* Top Bar (Header) */}
       <div className="flex items-center p-4 bg-[#140b20] border-b-2 border-amber-600">
-        <h1 className="text-white text-xl font-bold flex-grow text-center font-playfair text-shadow-glow-light"> {/* Added text-shadow-glow-light */}
+        <h1 className="text-white text-xl font-bold flex-grow text-center font-playfair text-shadow-glow-light">
           Vault
         </h1>
       </div>
@@ -47,8 +47,8 @@ const VaultCard: React.FC<VaultCardProps> = ({
         <h2 className="text-xl font-bold text-purple-300 mb-2 text-left font-poppins">
           Vault Balance
         </h2>
-        <div className="text-4xl sm:text-5xl text-amber-300 text-left mb-8 animate-pulse-light font-playfair text-shadow-glow-amber"> {/* Added text-shadow-glow-amber */}
-          {balance.toFixed(2)} ST
+        <div className="text-4xl sm:text-5xl text-amber-300 text-left mb-8 animate-pulse-light font-playfair text-shadow-glow-amber">
+          ${balance.toFixed(2)} {/* Changed from {balance.toFixed(2)} ST to ${balance.toFixed(2)} */}
         </div>
 
         <h3 className="text-xl font-bold text-purple-300 mb-4 text-left font-poppins">
@@ -56,7 +56,7 @@ const VaultCard: React.FC<VaultCardProps> = ({
         </h3>
         <div className="flex justify-start mb-8">
           {isClaimable ? (
-            <div className="text-2xl sm:text-3xl font-bold text-emerald-400 font-playfair animate-pulse-light text-shadow-glow-green"> {/* Added text-shadow-glow-green */}
+            <div className="text-2xl sm:text-3xl font-bold text-emerald-400 font-playfair animate-pulse-light text-shadow-glow-green">
               Your reward awaits!
             </div>
           ) : (
