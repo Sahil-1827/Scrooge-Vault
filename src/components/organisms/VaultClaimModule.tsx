@@ -13,11 +13,11 @@ interface ClaimLog {
 
 // Initial dummy data for logs - define it outside the component
 const initialDummyLogs: ClaimLog[] = [
-  { claimId: 'DUMMY_1', amount: 100.00, timestamp: '2024-01-01 12:00' },
-  { claimId: 'DUMMY_2', amount: 200.00, timestamp: '2024-01-01 11:00' },
-  { claimId: 'DUMMY_3', amount: 300.00, timestamp: '2024-01-01 10:00' },
-  { claimId: 'DUMMY_4', amount: 400.00, timestamp: '2024-01-01 09:00' },
-  { claimId: 'DUMMY_5', amount: 500.00, timestamp: '2024-01-01 08:00' },
+  { claimId: 'CLM1750399282435', amount: 95.14, timestamp: '6/20/2025, 11:31:22 AM' },
+  { claimId: 'CLM1750399282434', amount: 87.32, timestamp: '6/20/2025, 11:30:15 AM' },
+  { claimId: 'CLM1750399282433', amount: 92.45, timestamp: '6/20/2025, 11:29:08 AM' },
+  { claimId: 'CLM1750399282432', amount: 83.67, timestamp: '6/20/2025, 11:28:45 AM' },
+  { claimId: 'CLM1750399282431', amount: 90.23, timestamp: '6/20/2025, 11:27:30 AM' },
 ];
 
 // Main VaultClaimModule component
