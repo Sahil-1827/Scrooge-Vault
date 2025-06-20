@@ -3,14 +3,16 @@
 
 /* Global styles for casino aesthetic */
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: #111827;
+  font-family: 'Arial', sans-serif; /* Keep font family or replace with desired custom font */
+  background-color: #211A2C; /* Exact background color from image */
   color: #ffffff;
 }
 
-/* Custom glow animation for the Claim button */
+/* Removed the custom glow animation as it's not present in the reference image */
+/*
 @keyframes glow {
   0% { box-shadow: 0 0 5px #22d3ee, 0 0 10px #22d3ee, 0 0 15px #22d3ee; }
   50% { box-shadow: 0 0 10px #22d3ee, 0 0 20px #22d3ee, 0 0 30px #22d3ee; }
   100% { box-shadow: 0 0 5px #22d3ee, 0 0 10px #22d3ee, 0 0 15px #22d3ee; }
 }
+*/

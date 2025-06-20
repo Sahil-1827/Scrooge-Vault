@@ -9,7 +9,7 @@ interface LogItemProps {
 
 const LogItem: React.FC<LogItemProps> = ({ claimId, amount, timestamp }) => {
   return (
-    <div className="flex justify-between text-sm text-gray-300 py-2 border-b border-gray-700">
+    <div className="flex justify-between text-sm text-[#AAAAAA] py-3 border-b border-[#3A3247] last:border-b-0"> {/* Adjusted text color, padding, and border */}
       <span className="truncate">{claimId}</span>
       <span>{amount.toFixed(2)} ST</span>
       <span>{timestamp}</span>

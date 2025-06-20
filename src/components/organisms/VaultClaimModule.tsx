@@ -10,38 +10,78 @@ interface ClaimLog {
   timestamp: string;
 }
 
+// Initial dummy data for logs
+const initialDummyLogs: ClaimLog[] = [
+  { claimId: 'CLM1750397959999', amount: 50.25, timestamp: '1/1/2024, 12:00:00 PM' },
+  { claimId: 'CLM1750397959888', amount: 50.25, timestamp: '1/1/2024, 11:00:00 AM' },
+  { claimId: 'CLM1750397959777', amount: 50.25, timestamp: '1/1/2024, 10:00:00 AM' },
+  { claimId: 'CLM1750397959666', amount: 50.25, timestamp: '1/1/2024, 09:00:00 AM' },
+  { claimId: 'CLM1750397959555', amount: 50.25, timestamp: '1/1/2024, 08:00:00 AM' },
+];
+
 // Main VaultClaimModule component
 const VaultClaimModule: React.FC = () => {
-  const [balance, setBalance] = useState(1250.75); // State for dynamic balance
+  const [balance, setBalance] = useState(1234567.00);
   const [isClaimable, setIsClaimable] = useState(false);
-  const [logs, setLogs] = useState<ClaimLog[]>([
-    { claimId: 'CLM12345', amount: 50.25, timestamp: '2025-06-20 09:30 AM' },
-    { claimId: 'CLM12344', amount: 75.50, timestamp: '2025-06-20 09:15 AM' },
-    { claimId: 'CLM12343', amount: 100.00, timestamp: '2025-06-20 09:00 AM' },
-    { claimId: 'CLM12342', amount: 25.75, timestamp: '2025-06-20 08:45 AM' },
-    { claimId: 'CLM12341', amount: 200.10, timestamp: '2025-06-20 08:30 AM' },
-  ]);
-  const [timerActive, setTimerActive] = useState(true); // State to control initial timer
+  const [logs, setLogs] = useState<ClaimLog[]>(initialDummyLogs); // Initialize with dummy data
+  const [timerActive, setTimerActive] = useState(true);
+  const [claimCycle, setClaimCycle] = useState(0);
+
+  // Load logs from localStorage on component mount
+  useEffect(() => {
+    const storedLogs = localStorage.getItem('claimLogs');
+    let loadedLogs: ClaimLog[] = [];
+    if (storedLogs) {
+      try {
+        loadedLogs = JSON.parse(storedLogs);
+      } catch (e) {
+        console.error("Failed to parse stored logs from localStorage, using default:", e);
+      }
+    }
+    // Combine loaded logs (if any) with dummy data.
+    // Ensure unique entries if claimIds can overlap between dummy and stored.
+    // For simplicity, this example just prepends loaded logs to dummy data if loadedLogs is not empty.
+    // If you want strictly unique, you'd need a more complex merge.
+    if (loadedLogs.length > 0) {
+      // Filter out dummy logs that might have the same claimId as real logs, if necessary
+      // For this case, assuming dummy IDs (100, 200, etc.) won't conflict with CLM + timestamp
+      const combinedLogs = [...loadedLogs, ...initialDummyLogs];
+      setLogs(combinedLogs);
+    } else {
+      setLogs(initialDummyLogs); // If no stored logs, just use the dummies
+    }
+
+    setTimerActive(true);
+  }, []);
+
+  // Save logs to localStorage whenever the logs state changes
+  useEffect(() => {
+    // Only save logs if they are not just the initial dummy set
+    // Or save everything if you want dummy data to persist too
+    localStorage.setItem('claimLogs', JSON.stringify(logs));
+  }, [logs]);
 
   // Handler for timer end
   const handleTimerEnd = () => {
     setIsClaimable(true);
-    setTimerActive(false); // Stop the timer after the first cycle
+    setTimerActive(false);
   };
 
   // Handler for claim button click
   const handleClaim = () => {
     if (isClaimable) {
-      const claimAmount = 50.25; // Mocked claim amount
+      const claimAmount = 50.25;
       const newBalance = balance + claimAmount;
       setBalance(newBalance);
 
       const newLog: ClaimLog = {
-        claimId: `CLM${Date.now()}`, // Unique claim ID using timestamp
+        claimId: `CLM${Date.now()}`,
         amount: claimAmount,
-        timestamp: new Date().toLocaleString('en-US', { hour12: true }), // Current time
+        timestamp: new Date().toLocaleString('en-US', { hour12: true }),
       };
-      setLogs((prevLogs) => [newLog, ...prevLogs.slice(0, 4)]); // Add new log, keep last 5
+
+      // Add new log to the beginning of the array
+      setLogs((prevLogs) => [newLog, ...prevLogs]);
 
       toast.success(`Claim successful! +${claimAmount} ST`, {
         position: 'top-right',
@@ -52,25 +92,24 @@ const VaultClaimModule: React.FC = () => {
         draggable: true,
         theme: 'dark',
       });
-      // Do not reset isClaimable to allow multiple claims without timer
+
+      setIsClaimable(false);
+      setTimerActive(true);
+      setClaimCycle((prev) => prev + 1);
     }
   };
 
-  // Reset timerActive when component mounts
-  useEffect(() => {
-    setTimerActive(true); // Ensure timer starts on mount
-  }, []);
-
   return (
-    <div className="flex flex-col items-center space-y-6">
+    <div className="flex flex-col items-center space-y-6 w-full">
       <VaultCard
         balance={balance}
         isClaimable={isClaimable}
         onClaim={handleClaim}
         onTimerEnd={handleTimerEnd}
+        timerKey={claimCycle}
       />
       <ClaimLogs logs={logs} />
-      <ToastContainer /> {/* Add ToastContainer to render toasts */}
+      <ToastContainer />
     </div>
   );
 };
