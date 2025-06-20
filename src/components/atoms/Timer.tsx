@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
-// Props for the Timer component
 interface TimerProps {
   initialSeconds: number;
   onTimerEnd: () => void;
@@ -9,7 +8,6 @@ interface TimerProps {
 const Timer: React.FC<TimerProps> = ({ initialSeconds, onTimerEnd }) => {
   const [seconds, setSeconds] = useState(initialSeconds);
 
-  // Countdown logic
   useEffect(() => {
     if (seconds <= 0) {
       onTimerEnd();
@@ -23,13 +21,12 @@ const Timer: React.FC<TimerProps> = ({ initialSeconds, onTimerEnd }) => {
     return () => clearInterval(interval);
   }, [seconds, onTimerEnd]);
 
-  // Format time as MM:SS
   const formatTime = (secs: number) => {
     const minutes = Math.floor(secs / 60);
     const remainingSeconds = secs % 60;
     return {
-      minutes: minutes.toString().padStart(2, '0'),
-      seconds: remainingSeconds.toString().padStart(2, '0'),
+      minutes: minutes.toString().padStart(2, "0"),
+      seconds: remainingSeconds.toString().padStart(2, "0")
     };
   };
 

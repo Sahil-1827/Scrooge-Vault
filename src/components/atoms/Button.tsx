@@ -1,18 +1,17 @@
 import React from 'react';
 
-// Props for the reusable Button component
 interface ButtonProps {
   disabled: boolean;
   onClick: () => void;
   children: React.ReactNode;
-  loading?: boolean; // Add an optional loading prop
+  loading?: boolean; 
 }
 
 const Button: React.FC<ButtonProps> = ({ disabled, onClick, children, loading }) => {
   return (
     <button
       onClick={onClick}
-      disabled={disabled || loading} // Disable the button when loading
+      disabled={disabled || loading} 
       className={`w-full py-4 px-6 rounded-lg font-bold text-lg transition-all duration-300
         ${disabled || loading
           ? 'bg-[#3A3247] cursor-not-allowed opacity-50'

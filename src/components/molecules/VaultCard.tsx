@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import Timer from "../atoms/Timer";
 import Button from "../atoms/Button";
 
-// Props for the VaultCard component
 interface VaultCardProps {
   balance: number;
   isClaimable: boolean;
   onClaim: () => void;
   onTimerEnd: () => void;
-  timerKey: number; // New prop for key to reset timer
+  timerKey: number;
 }
 
 const VaultCard: React.FC<VaultCardProps> = ({
@@ -18,13 +17,12 @@ const VaultCard: React.FC<VaultCardProps> = ({
   onTimerEnd,
   timerKey
 }) => {
-  const [isClaiming, setIsClaiming] = useState(false); // State to track loading
+  const [isClaiming, setIsClaiming] = useState(false);
 
   const handleClaimClick = async () => {
     setIsClaiming(true);
-    // Simulate an async operation for the claim
-    await new Promise((resolve) => setTimeout(resolve, 2000)); // Added a delay to show GIF
-    onClaim(); // Call the original onClaim logic
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    onClaim();
     setIsClaiming(false);
   };
 
@@ -37,7 +35,6 @@ const VaultCard: React.FC<VaultCardProps> = ({
         </h1>
       </div>
 
-      {/* Vault Chest Image Section */}
       <div className=" h-56 flex items-center justify-center overflow-hidden">
         <img
           src="/box.png" // You need to place your image file here, e.g., in the public folder
@@ -59,7 +56,6 @@ const VaultCard: React.FC<VaultCardProps> = ({
         </h3>
         <div className="flex justify-start mb-8">
           <Timer key={timerKey} initialSeconds={60} onTimerEnd={onTimerEnd} />{" "}
-          {/* Added key prop */}
         </div>
         <Button
           disabled={!isClaimable || isClaiming}
