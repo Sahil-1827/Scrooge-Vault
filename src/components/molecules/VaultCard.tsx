@@ -27,7 +27,7 @@ const VaultCard: React.FC<VaultCardProps> = ({
   };
 
   return (
-    <div className="bg-[#292231] p-0 rounded-xl shadow-lg shadow-black/30 max-w-md w-full overflow-hidden">
+    <div className="bg-[#292231] p-0 rounded-xl shadow-2xl shadow-purple-900/50 max-w-md w-full overflow-hidden border border-purple-800"> {/* Enhanced shadow and border */}
       {/* Top Bar (Header) */}
       <div className="flex items-center p-4 bg-[#211A2C] border-b border-[#3A3247]">
         <h1 className="text-white text-xl font-bold flex-grow text-center">
@@ -39,19 +39,19 @@ const VaultCard: React.FC<VaultCardProps> = ({
         <img
           src="/box.png" // You need to place your image file here, e.g., in the public folder
           alt="Vault Chest"
-          className="w-44 h-44 md:w-56 md:h-56 object-cover"
+          className="w-44 h-44 md:w-56 md:h-56 object-cover animate-float" // Added float animation
         />
       </div>
 
       <div className="p-6 flex flex-col items-center">
-        <h2 className="text-xl font-bold text-[#AAAAAA] mb-2 text-left">
+        <h2 className="text-xl font-bold text-purple-300 mb-2 text-left"> {/* Accent color for text */}
           Vault Balance
         </h2>
-        <div className="text-4xl font-mono text-white text-left mb-8">
+        <div className="text-5xl font-mono text-yellow-300 text-left mb-8 animate-pulse-light"> {/* Vibrant balance, subtle pulse */}
           {balance.toFixed(2)} ST
         </div>
 
-        <h3 className="text-xl font-bold text-[#AAAAAA] mb-4 text-left">
+        <h3 className="text-xl font-bold text-purple-300 mb-4 text-left"> {/* Accent color for text */}
           Claim in
         </h3>
         <div className="flex justify-start mb-8">

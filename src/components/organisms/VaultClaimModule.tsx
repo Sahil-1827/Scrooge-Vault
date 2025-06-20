@@ -130,12 +130,12 @@ const VaultClaimModule: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center py-4 px-2 sm:px-4 bg-[#211A2C] w-full overflow-x-hidden">
+    <div className="min-h-screen flex items-center justify-center py-4 px-2 sm:px-4 bg-[#1A132C] w-full"> {/* Match new background */}
       {showConfetti && (
         <ReactConfetti
           width={windowDimension.width}
           height={windowDimension.height}
-          numberOfPieces={5000}
+          numberOfPieces={1000}
           recycle={false}
           tweenDuration={20000}
         />
