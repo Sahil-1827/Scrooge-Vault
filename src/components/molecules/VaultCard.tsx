@@ -26,10 +26,7 @@ const VaultCard: React.FC<VaultCardProps> = ({ balance, isClaimable, onClaim, on
     <div className="bg-[#292231] p-0 rounded-xl shadow-lg shadow-black/30 max-w-md w-full overflow-hidden">
       {/* Top Bar (Header) */}
       <div className="flex items-center p-4 bg-[#211A2C] border-b border-[#3A3247]">
-        <button className="text-white text-2xl mr-4" aria-label="Go back">
-          &larr; {/* Left arrow character */}
-        </button>
-        <h1 className="text-white text-xl font-bold flex-grow text-center pr-10">Vault</h1>
+        <h1 className="text-white text-xl font-bold flex-grow text-center">Vault</h1>
       </div>
 
       {/* Vault Chest Image Section */}
