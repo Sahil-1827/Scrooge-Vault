@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@import 'react-toastify/dist/ReactToastify.css';
+
+/* Global styles for casino aesthetic */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #111827;
+  color: #ffffff;
+}
+
+/* Custom glow animation for the Claim button */
+@keyframes glow {
+  0% { box-shadow: 0 0 5px #22d3ee, 0 0 10px #22d3ee, 0 0 15px #22d3ee; }
+  50% { box-shadow: 0 0 10px #22d3ee, 0 0 20px #22d3ee, 0 0 30px #22d3ee; }
+  100% { box-shadow: 0 0 5px #22d3ee, 0 0 10px #22d3ee, 0 0 15px #22d3ee; }
+}
