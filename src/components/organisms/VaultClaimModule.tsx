@@ -39,7 +39,7 @@ const initialDummyLogs: ClaimLog[] = [
 ];
 
 const VaultClaimModule: React.FC = () => {
-  const [balance, setBalance] = useState<number>(12345.0);
+  const [balance, setBalance] = useState<number>(201827.0);
   const [isClaimable, setIsClaimable] = useState<boolean>(false);
   const [claimCycle, setClaimCycle] = useState<number>(0);
 
