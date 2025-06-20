@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import VaultCard from "../molecules/VaultCard";
 import ClaimLogs from "../molecules/ClaimLogs";
 import { toast, ToastContainer } from "react-toastify";
-import ReactConfetti from "react-confetti"; // Import ReactConfetti
+import ReactConfetti from "react-confetti";
 
 interface ClaimLog {
   claimId: string;
@@ -41,21 +41,20 @@ const initialDummyLogs: ClaimLog[] = [
 const VaultClaimModule: React.FC = () => {
   const [balance, setBalance] = useState(1234567.0);
   const [isClaimable, setIsClaimable] = useState(false);
-  // const [timerActive, setTimerActive] = useState(true);
   const [claimCycle, setClaimCycle] = useState(0);
 
   const [showConfetti, setShowConfetti] = useState(false);
+  // Initialize with document dimensions for full coverage
   const [windowDimension, setWindowDimension] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight
-  }); // State to get window dimensions for confetti
+    width: document.documentElement.clientWidth,
+    height: document.documentElement.scrollHeight
+  });
 
   const [logs, setLogs] = useState<ClaimLog[]>(() => {
     const storedLogs = localStorage.getItem("claimLogs");
     if (storedLogs) {
       try {
         const parsedLogs = JSON.parse(storedLogs);
-
         return parsedLogs.length > 0 ? parsedLogs : initialDummyLogs;
       } catch (e) {
         console.error(
@@ -68,29 +67,24 @@ const VaultClaimModule: React.FC = () => {
     return initialDummyLogs;
   });
 
-  // useEffect(() => {
-  //   setTimerActive(true);
-  // }, []);
-
   useEffect(() => {
-    localStorage.setItem("claimLogs", JSON.stringify(logs));
-  }, [logs]);
-
-  useEffect(() => {
+    // Update dimensions on window resize and initially on mount
     const handleResize = () => {
       setWindowDimension({
-        width: window.innerWidth,
-        height: window.innerHeight
+        width: document.documentElement.clientWidth,
+        height: document.documentElement.scrollHeight
       });
     };
+
     window.addEventListener("resize", handleResize);
+    handleResize(); // Call once on mount to set initial dimensions
+
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   // Handler for timer end
   const handleTimerEnd = () => {
     setIsClaimable(true);
-    // setTimerActive(false);
   };
 
   // Handler for claim button click
@@ -103,7 +97,7 @@ const VaultClaimModule: React.FC = () => {
       const newLog: ClaimLog = {
         claimId: `CLM${Date.now()}`,
         amount: claimAmount,
-        timestamp: new Date().toLocaleString("en-US", { hour12: true }) // Current time
+        timestamp: new Date().toLocaleString("en-US", { hour12: true })
       };
 
       setLogs((prevLogs) => [newLog, ...prevLogs]);
@@ -124,7 +118,6 @@ const VaultClaimModule: React.FC = () => {
       }, 5000);
 
       setIsClaimable(false);
-      // setTimerActive(true);
       setClaimCycle((prev) => prev + 1);
     }
   };
@@ -137,23 +130,16 @@ const VaultClaimModule: React.FC = () => {
           height={windowDimension.height}
           numberOfPieces={5000}
           recycle={false}
-          tweenDuration={20000}
+          tweenDuration={10000}
         />
       )}
       <div className="flex flex-col items-center space-y-6 w-full max-w-md">
         {/* New Section for Welcome Text and Features */}
         <div className="bg-[#1e1430] p-6 rounded-xl shadow-[0_0_20px_rgba(150,0,255,0.7)] w-full text-center border-2 border-yellow-500">
-          <h2 className="text-2xl sm:text-3xl font-bold text-yellow-300 mb-4 animate-pulse-light font-playfair">Welcome to Scrooge Vault!</h2> {/* Adjusted font size for small screens */}
-          <p className="text-sm sm:text-md text-[#CCCCCC] mb-4 font-lora"> {/* Adjusted font size for small screens */}
+          <h2 className="text-2xl sm:text-3xl font-bold text-yellow-300 mb-4 animate-pulse-light font-playfair">Welcome to Scrooge Vault!</h2>
+          <p className="text-sm sm:text-md text-[#CCCCCC] mb-4 font-lora">
             Unlock your daily rewards effortlessly. The Scrooge Vault is designed to provide you with a seamless and exciting claiming experience.
           </p>
-          {/* <h3 className="text-xl font-bold text-purple-300 mb-3 font-poppins">Key Features:</h3>
-          <ul className="text-[#CCCCCC] list-disc list-inside text-left mx-auto max-w-xs font-lora">
-            <li>Daily claimable rewards.</li>
-            <li>Transparent claim history.</li>
-            <li>Secure and reliable.</li>
-            <li>Engaging user interface.</li>
-          </ul> */}
         </div>
         <VaultCard
           balance={balance}
