@@ -32,15 +32,18 @@ const Timer: React.FC<TimerProps> = ({ initialSeconds, onTimerEnd }) => {
 
   const { minutes, seconds: formattedSeconds } = formatTime(seconds);
 
+  // Determine if timer is stopped for applying glowing effect
+  const isStopped = seconds <= 0;
+
   return (
     <div className="flex space-x-2">
-      <div className="flex flex-col items-center justify-center bg-[#3A3247] p-4 rounded-lg min-w-[70px] h-[70px] text-white border border-purple-500/30">
-        <span className="text-4xl font-playfair text-pink-400">{minutes}</span> {/* Vibrant number color, Playfair Display */}
-        <span className="text-xs text-[#AAAAAA] font-poppins">Minutes</span> {/* Applied Poppins */}
+      <div className={`flex flex-col items-center justify-center bg-[#2c1c3f] p-4 rounded-lg min-w-[70px] h-[70px] text-white border-2 border-emerald-400 ${isStopped ? 'animate-glow-green' : ''}`}> {/* Added animate-glow-green class conditionally */}
+        <span className="text-4xl font-playfair text-pink-400">{minutes}</span>
+        <span className="text-xs text-emerald-200 font-poppins">Minutes</span>
       </div>
-      <div className="flex flex-col items-center justify-center bg-[#3A3247] p-4 rounded-lg min-w-[70px] h-[70px] text-white border border-purple-500/30">
-        <span className="text-4xl font-playfair text-pink-400">{formattedSeconds}</span> {/* Vibrant number color, Playfair Display */}
-        <span className="text-xs text-[#AAAAAA] font-poppins">Seconds</span> {/* Applied Poppins */}
+      <div className={`flex flex-col items-center justify-center bg-[#2c1c3f] p-4 rounded-lg min-w-[70px] h-[70px] text-white border-2 border-emerald-400 ${isStopped ? 'animate-glow-green' : ''}`}> {/* Added animate-glow-green class conditionally */}
+        <span className="text-4xl font-playfair text-pink-400">{formattedSeconds}</span>
+        <span className="text-xs text-emerald-200 font-poppins">Seconds</span>
       </div>
     </div>
   );

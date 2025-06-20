@@ -130,7 +130,7 @@ const VaultClaimModule: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center py-4 px-2 sm:px-4 bg-[#1A132C] w-full"> {/* Match new background */}
+    <div className="min-h-screen flex items-center justify-center py-4 px-2 sm:px-4 bg-[#0d0617] w-full"> {/* Matched new background */}
       {showConfetti && (
         <ReactConfetti
           width={windowDimension.width}
@@ -142,13 +142,13 @@ const VaultClaimModule: React.FC = () => {
       )}
       <div className="flex flex-col items-center space-y-6 w-full max-w-md">
         {/* New Section for Welcome Text and Features */}
-        <div className="bg-[#292231] p-6 rounded-xl shadow-2xl shadow-purple-900/50 w-full text-center border border-purple-800">
+        <div className="bg-[#1e1430] p-6 rounded-xl shadow-[0_0_20px_rgba(150,0,255,0.7)] w-full text-center border-2 border-yellow-500"> {/* Adjusted background, enhanced shadow, and golden border */}
           <h2 className="text-3xl font-bold text-yellow-300 mb-4 animate-pulse-light font-playfair">Welcome to Scrooge Vault!</h2>
           <p className="text-md text-[#CCCCCC] mb-4 font-lora">
             Unlock your daily rewards effortlessly. The Scrooge Vault is designed to provide you with a seamless and exciting claiming experience.
           </p>
-          {/* <h3 className="text-xl font-bold text-purple-300 mb-3 font-poppins">Key Features:</h3> 
-          <ul className="text-[#CCCCCC] list-disc list-inside text-left mx-auto max-w-xs font-lora"> 
+          {/* <h3 className="text-xl font-bold text-purple-300 mb-3 font-poppins">Key Features:</h3>
+          <ul className="text-[#CCCCCC] list-disc list-inside text-left mx-auto max-w-xs font-lora">
             <li>Daily claimable rewards.</li>
             <li>Transparent claim history.</li>
             <li>Secure and reliable.</li>

@@ -20,7 +20,7 @@ const Button: React.FC<ButtonProps> = ({
       className={`w-full py-4 px-6 rounded-lg font-bold text-lg transition-all duration-300
         ${
           disabled || loading
-            ? "bg-[#3A3247] cursor-not-allowed opacity-50"
+            ? "bg-[#2c1c3f] cursor-not-allowed opacity-50" // Changed disabled background
             : "bg-gradient-to-r from-purple-600 to-indigo-700 hover:from-purple-700 hover:to-indigo-800 transform hover:scale-105 hover:shadow-lg hover:shadow-purple-500/50 active:scale-100 hover:cursor-pointer"
         } text-white font-poppins focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75
         ${loading ? "flex items-center justify-center" : ""}

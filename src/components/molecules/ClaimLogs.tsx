@@ -17,7 +17,7 @@ const ClaimLogs: React.FC<ClaimLogsProps> = ({ logs }) => {
       <h3 className="text-xl font-bold text-white mb-4 text-left px-4 font-playfair"> {/* Applied Playfair Display */}
         Claim Logs
       </h3>
-      <div className="bg-[#292231] p-4 rounded-xl overflow-y-auto max-h-[300px]">
+      <div className="bg-[#1e1430] p-4 rounded-xl overflow-y-auto max-h-[300px]"> {/* Adjusted background */}
         {logs.map((log) => (
           <LogItem
             key={log.claimId}
