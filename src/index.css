@@ -2,8 +2,7 @@
 @import "react-toastify/dist/ReactToastify.css";
 
 body {
-  font-family: "Poppins", sans-serif; /* General body font */
-  /* Replaced flat background with a rich radial gradient */
+  font-family: "Poppins", sans-serif;
   background: radial-gradient(circle at center, #1a0f2c 0%, #0d0617 100%);
   color: #ffffff;
   overflow-x: hidden;

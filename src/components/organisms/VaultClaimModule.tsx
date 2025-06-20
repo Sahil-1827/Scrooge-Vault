@@ -162,37 +162,6 @@ const VaultClaimModule: React.FC = () => {
     setClaimCycle((prev) => prev + 1);
   };
 
-  // return (
-  //   <div className="min-h-screen flex items-center justify-center py-4 px-2 sm:px-4 bg-[#0d0617] w-full">
-  //     {showConfetti && (
-  //       <ReactConfetti
-  //         width={windowDimension.width}
-  //         height={windowDimension.height}
-  //         numberOfPieces={5000}
-  //         recycle={false}
-  //         tweenDuration={20000}
-  //         style={{ opacity: confettiOpacity, transition: 'opacity 0.3s ease-in-out' }}
-  //       />
-  //     )}
-  //     <div className="flex flex-col items-center space-y-6 w-full max-w-md">
-  //       <div className="bg-[#1e1430] p-6 rounded-xl shadow-[0_0_20px_rgba(150,0,255,0.7)] w-full text-center border-2 border-yellow-500">
-  //         <h2 className="text-2xl sm:text-3xl font-bold text-yellow-300 mb-4 animate-pulse-light font-playfair">Welcome to Scrooge Vault!</h2>
-  //         <p className="text-sm sm:text-md text-[#CCCCCC] mb-4 font-lora">
-  //           Unlock your daily rewards effortlessly. The Scrooge Vault is designed to provide you with a seamless and exciting claiming experience.
-  //         </p>
-  //       </div>
-  //       <VaultCard
-  //         balance={balance}
-  //         isClaimable={isClaimable}
-  //         onClaim={handleClaim}
-  //         onTimerEnd={handleTimerEnd}
-  //         timerKey={claimCycle}
-  //       />
-  //       <ClaimLogs logs={logs} />
-  //       <ToastContainer />
-  //     </div>
-  //   </div>
-  // );
   return (
     <div className="min-h-screen flex items-center justify-center py-4 px-2 sm:px-4 bg-[#0d0617] w-full">
       {showConfetti && (
@@ -209,17 +178,13 @@ const VaultClaimModule: React.FC = () => {
         />
       )}
       <div className="flex flex-col items-center space-y-6 w-full max-w-md">
-        {/* New Section for Welcome Text and Features - Golden themed */}
         <div className="bg-[#1e1430] p-6 rounded-xl shadow-[0_0_25px_rgba(255,215,0,0.6)] w-full text-center border-2 border-amber-600">
           {" "}
-          {/* Stronger golden shadow and border */}
           <h2 className="text-2xl sm:text-3xl font-bold text-yellow-300 mb-4 animate-pulse-light font-playfair text-shadow-glow">
             Welcome to Scrooge Vault!
           </h2>{" "}
-          {/* Added text-shadow-glow */}
           <p className="text-sm sm:text-md text-amber-100 mb-4 font-lora">
             {" "}
-            {/* Adjusted text color for more golden feel */}
             Unlock your daily rewards effortlessly. The Scrooge Vault is
             designed to provide you with a seamless and exciting claiming
             experience.

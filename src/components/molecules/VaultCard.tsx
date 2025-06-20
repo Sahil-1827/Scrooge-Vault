@@ -28,7 +28,6 @@ const VaultCard: React.FC<VaultCardProps> = ({
 
   return (
     <div className="bg-[#1e1430] p-0 rounded-xl shadow-[0_0_40px_rgba(200,0,255,0.9)] max-w-md w-full overflow-hidden border-2 border-amber-400">
-      {/* Top Bar (Header) */}
       <div className="flex items-center p-4 bg-[#140b20] border-b-2 border-amber-600">
         <h1 className="text-white text-xl font-bold flex-grow text-center font-playfair text-shadow-glow-light">
           Vault
@@ -48,7 +47,7 @@ const VaultCard: React.FC<VaultCardProps> = ({
           Vault Balance
         </h2>
         <div className="text-4xl sm:text-5xl text-amber-300 text-left mb-8 animate-pulse-light font-playfair text-shadow-glow-amber">
-          ${balance.toFixed(2)} {/* Changed from {balance.toFixed(2)} ST to ${balance.toFixed(2)} */}
+          ${balance.toFixed(2)}
         </div>
 
         <h3 className="text-xl font-bold text-purple-300 mb-4 text-left font-poppins">

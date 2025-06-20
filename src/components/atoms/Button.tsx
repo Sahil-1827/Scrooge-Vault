@@ -21,7 +21,7 @@ const Button: React.FC<ButtonProps> = ({
         ${
           disabled || loading
             ? "bg-[#2c1c3f] cursor-not-allowed opacity-50"
-            : "bg-gradient-to-br from-purple-700 to-indigo-800 hover:from-purple-800 hover:to-indigo-900 transform hover:scale-105 active:scale-95 active:shadow-inset-lg hover:shadow-lg hover:shadow-purple-500/50 active:shadow-purple-700/70 hover:cursor-pointer" // Enhanced gradient and active/hover shadows
+            : "bg-gradient-to-br from-purple-700 to-indigo-800 hover:from-purple-800 hover:to-indigo-900 transform hover:scale-105 active:scale-95 active:shadow-inset-lg hover:shadow-lg hover:shadow-purple-500/50 active:shadow-purple-700/70 hover:cursor-pointer"
         } text-white font-poppins focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-75
         ${loading ? "flex items-center justify-center" : ""}
         ${!disabled && !loading ? "animate-pulse-once" : ""}
